@@ -1,0 +1,42 @@
+! ~/.Xresources
+! Dark GitHub-inspired theme
+
+! ── General ─────────────────────────────
+*.foreground:   #c9d1d9
+*.background:   #0d1117
+*.cursorColor:  #58a6ff
+
+! ── GitHub Dark palette ─────────────────
+*.color0:       #484f58
+*.color1:       #ff7b72
+*.color2:       #3fb950
+*.color3:       #d29922
+*.color4:       #58a6ff
+*.color5:       #bc8cff
+*.color6:       #39c5cf
+*.color7:       #b1bac4
+
+*.color8:       #6e7681
+*.color9:       #ffa198
+*.color10:      #56d364
+*.color11:      #e3b341
+*.color12:      #79c0ff
+*.color13:      #d2a8ff
+*.color14:      #56d4dd
+*.color15:      #f0f6fc
+
+! ── Selection ───────────────────────────
+*.highlightColor: #1f6feb
+*.highlightTextColor: #ffffff
+
+! ── Xterm ───────────────────────────────
+XTerm*faceName: MathJax_Typewriter
+XTerm*faceSize: 7
+XTerm*saveLines: 10000
+XTerm*scrollBar: false
+
+XTerm*selectToClipboard: true
+XTerm*VT100.translations: #override \
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
