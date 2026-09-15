@@ -1,0 +1,155 @@
+# GitHub-inspired dark theme for Irssi
+#
+# Install:
+#   mkdir -p ~/.irssi
+#   cp github.theme ~/.irssi/
+#
+# Load in Irssi:
+#   /set theme github
+#
+# Reload:
+#   /reload
+
+abstracts = {
+    # General colors
+    text = "%w";
+    default = "%w";
+    info = "%W";
+    error = "%R";
+    warning = "%Y";
+    success = "%G";
+
+    # Window/status
+    status = "%K";
+    status_default = "%w";
+    status_window = "%W";
+    status_channel = "%C";
+    status_name = "%W";
+    status_name_bg = "%K";
+    status_count = "%Y";
+
+    # Server/channel
+    channel = "%C";
+    nick = "%W";
+    ownnick = "%C";
+    server = "%B";
+    topic = "%W";
+
+    # Messages
+    msg = "%w";
+    own_msg = "%W";
+    notice = "%M";
+    action = "%Y";
+    hilight = "%W";
+    hilight_bg = "%B";
+
+    # IRC events
+    join = "%G";
+    part = "%R";
+    quit = "%R";
+    kick = "%R";
+    mode = "%Y";
+    invite = "%G";
+    netsplit = "%R";
+    netsplit_join = "%G";
+    netsplit_join_active = "%C";
+    netsplit_quit = "%R";
+
+    # Timestamp
+    timestamp = "%K";
+
+    # Nick colors
+    nickcolor = "%C";
+    nickcolor1 = "%B";
+    nickcolor2 = "%G";
+    nickcolor3 = "%M";
+    nickcolor4 = "%Y";
+    nickcolor5 = "%R";
+    nickcolor6 = "%C";
+    nickcolor7 = "%W";
+
+    # Input
+    input = "%w";
+    input_prompt = "%C";
+    input_start = "%B";
+    input_beg = "%C";
+    input_delim = "%K";
+
+    # Completion
+    completion = "%C";
+
+    # Special
+    line_start = "%K";
+    line_end = "%K";
+    control = "%K";
+};
+
+formats = {
+    "fe-common/core" = {
+        line_start = "%K%|";
+        line_start_irssi = "%K%|";
+
+        timestamp = "%K[%H$Z%K] ";
+        timestamp_nochat = "%K[%H$Z%K] ";
+
+        pubmsg = "$timestamp$nickcolor$nick%w: $1";
+        pubmsg_me = "$timestamp$nickcolor$nick%W: $1";
+        pubmsg_hilight = "$timestamp$nickcolor$nick%W: $1";
+
+        own_msg = "$timestamp%W$nick%w: $1";
+        own_msg_channel = "$timestamp%W$nick%w: $1";
+
+        action = "$timestamp%Y* $nickcolor$nick%Y $1";
+        action_private = "$timestamp%Y* $nickcolor$nick%Y $1";
+
+        notice = "$timestamp%M-$nick%w-$1";
+
+        join = "$timestamp%G→ $nickcolor$nick%G has joined $channel";
+        part = "$timestamp%R← $nickcolor$nick%R has left $channel";
+        quit = "$timestamp%R← $nickcolor$nick%R has quit";
+
+        kick = "$timestamp%R← $nick%R was kicked from $channel";
+        quit_once = "$timestamp%R← $nick%R has quit";
+
+        topic = "$timestamp%CTopic:%w $1";
+        topic_info = "$timestamp%CTopic:%w $1";
+
+        mode = "$timestamp%YMode:%w $1";
+
+        invite = "$timestamp%G$nick%w invited you to $channel";
+
+        nick_changed = "$timestamp%Y$nick%w is now known as %Y$1";
+
+        servernotice = "$timestamp%B-$1";
+        server_error = "$timestamp%RERROR:%w $1";
+
+        whois = "$timestamp%C$1%w: $2";
+
+        own_action = "$timestamp%Y* $nickcolor$nick%Y $1";
+    };
+
+    "fe-common/irc" = {
+        chanmode = "$timestamp%YMode:%w $1";
+        chanmode_user = "$timestamp%YMode:%w $1";
+
+        server_chanmsg = "$timestamp%B[$server]%w $1";
+        server_event = "$timestamp%B[$server]%w $1";
+
+        join = "$timestamp%G→ $nick%G has joined $channel";
+        part = "$timestamp%R← $nick%R has left $channel";
+        kick = "$timestamp%R← $nick%R was kicked from $channel by $nick2";
+
+        netsplit = "$timestamp%R*** Netsplit: $1";
+        netsplit_join = "$timestamp%G*** Netsplit healed: $1";
+        netsplit_quit = "$timestamp%R*** Netsplit: $1";
+    };
+
+    "fe-text" = {
+        sb = "%K[%w$[%W$window%w]%K] ";
+
+        statusbar = "%K%1 %C$active_name %K| %w$items %K| %W$users %K| %C$window";
+
+        more_text = "%C-- more --";
+        lag = "%YLag: $0";
+    };
+};
