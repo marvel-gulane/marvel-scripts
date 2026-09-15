@@ -1,362 +1,305 @@
+# ============================================================
+# Irssi Configuration
+# Beginner-friendly / robust setup
+# ============================================================
+#
+# Main files:
+#   ~/.irssi/config
+#   ~/.irssi/github.theme
+#
+# Start Irssi:
+#   irssi
+#
+# Useful commands:
+#   /connect irc.libera.chat
+#   /join #channel
+#   /nick YourNick
+#   /window list
+#   /help
+#   /quit
+#
+# ============================================================
+
+
+settings = {
+    core = {
+        real_name = "IRC User";
+        user_name = "ircuser";
+        nick = "NewUser";
+
+        quit_message = "Leaving IRC. See you!";
+        part_message = "See you!";
+        show_quit_once = "yes";
+
+        recode = "yes";
+        settings_autosave = "yes";
+        use_status_window = "yes";
+        print_active_channel = "yes";
+    };
+
+    "fe-common/core" = {
+        theme = "github";
+
+        autolog = "yes";
+        autolog_path = "~/.irssi/logs/$tag/$0.log";
+
+        use_colors = "yes";
+        beep_msg_level = "HILIGHT MSGS DCCMSGS";
+        bell_beeps = "yes";
+
+        completion_char = " ";
+        completion_keep_privates = "yes";
+        completion_auto = "yes";
+        completion = "normal";
+
+        expand_quoted = "yes";
+        autoclosequery = "no";
+
+        timestamps = "yes";
+        timestamp_format = "%H:%M";
+
+        activity_hide_targets = "no";
+        activity_msg_level = "MSGS NOTICES DCCMSGS";
+        activity_status_window = "yes";
+
+        hilight_nicks = "yes";
+        hilight_nick_matches = "yes";
+
+        autostick_split_windows = "yes";
+        autocreate_own_query = "yes";
+
+        window_check_level = "MSGCHANGE";
+        scrollback_time = "7days";
+        scrollback_lines = "5000";
+
+        show_nickmode = "yes";
+        show_nickmode_empty = "yes";
+
+        max_channel_name_len = "50";
+        max_nick_length = "32";
+    };
+
+    "fe-common/irc" = {
+        channel_max_len = "200";
+        show_names_on_join = "yes";
+
+        join_auto_chans = "no";
+        auto_whowas = "yes";
+
+        ctcp_version_reply = "Irssi IRC client";
+        ctcp_version_reply_client = "Irssi";
+    };
+
+    "fe-text" = {
+        actlist_sort = "refnum";
+        autostick_split_windows = "yes";
+
+        term_charset = "UTF-8";
+        use_terminfo = "yes";
+
+        scroll_page_count = "2";
+
+        theme = "github";
+
+        indent = "yes";
+        show_nickmode = "yes";
+        show_nickmode_empty = "yes";
+
+        beep_msg_level = "HILIGHT MSGS";
+        beep_when_away = "no";
+    };
+};
+
+
+# ============================================================
+# SERVER SETTINGS
+# ============================================================
+
 servers = (
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "Efnet"; port = "6667"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "Dalnet"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
-  {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
-    port = "6667";
-  },
-  { 
-    address = "irc.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-  },
-  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-  {
-    address = "irc.anonops.com";
-    chatnet = "Anonops";
-    port = "6697";
-    use_ssl = "yes";
-    ssl_verify = "no";
-  },
-  { 
-    address = "irc.soldierx.com";
-    chatnet = "SoldierX";
-    port = "6667";
-  },
-  { address = "irc.libera.chat"; chatnet = "Libera"; port = "6667"; },
-  {
-    address = "Libera";
-    port = "0";
-    password = "6697";
-    use_ssl = "yes";
-    ssl_verify = "no";
-  }
+    {
+        address = "irc.libera.chat";
+        chatnet = "LiberaChat";
+        port = "6697";
+        use_tls = "yes";
+        tls_verify = "yes";
+        autoconnect = "no";
+        autosendcmd = "/^msg NickServ IDENTIFY YourPassword";
+    }
 );
+
+
+# ============================================================
+# NETWORK / CHATNET SETTINGS
+# ============================================================
 
 chatnets = {
-  IRCnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
-  Undernet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  DALnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  OFTC = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  GameSurge = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  WebChat = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  Rizon = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  LinkNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  SILC = { type = "SILC"; };
-  Anonops = { type = "IRC"; };
-  SoldierX = { type = "IRC"; };
-  Libera = { type = "IRC"; };
-  Freenode = { type = "IRC"; };
+    LiberaChat = {
+        type = "IRC";
+        autosendcmd = "";
+        max_kicks = "4";
+        max_modes = "4";
+        max_msgs = "4";
+        max_whois = "4";
+        max_targets = "4";
+    };
 };
+
+
+# ============================================================
+# CHANNELS
+# ============================================================
 
 channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; }
+    {
+        name = "#libera";
+        chatnet = "LiberaChat";
+        autojoin = "no";
+    }
 );
 
+
+# ============================================================
+# ALIASES
+# ============================================================
+
 aliases = {
-  J = "join";
-  WJOIN = "join -window";
-  WQUERY = "query -window";
-  LEAVE = "part";
-  BYE = "quit";
-  EXIT = "quit";
-  SIGNOFF = "quit";
-  DESCRIBE = "action";
-  DATE = "time";
-  HOST = "userhost";
-  LAST = "lastlog";
-  SAY = "msg *";
-  WI = "whois";
-  WII = "whois $0 $0";
-  WW = "whowas";
-  W = "who";
-  N = "names";
-  M = "msg";
-  T = "topic";
-  C = "clear";
-  CL = "clear";
-  K = "kick";
-  KB = "kickban";
-  KN = "knockout";
-  BANS = "ban";
-  B = "ban";
-  MUB = "unban *";
-  UB = "unban";
-  IG = "ignore";
-  UNIG = "unignore";
-  SB = "scrollback";
-  UMODE = "mode $N";
-  WC = "window close";
-  WN = "window new hide";
-  SV = "say Irssi $J ($V) - http://irssi.org/";
-  GOTO = "sb goto";
-  CHAT = "dcc chat";
-  RUN = "SCRIPT LOAD";
-  CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
-  SBAR = "STATUSBAR";
-  INVITELIST = "mode $C +I";
-  Q = "QUERY";
-  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
-  EXEMPTLIST = "mode $C +e";
-  ATAG = "WINDOW SERVER";
-  UNSET = "set -clear";
-  RESET = "set -default";
+    # Basic
+    J = "join";
+    P = "part";
+    Q = "quit";
+    W = "whois";
+    N = "nick";
+
+    # Windows
+    WLIST = "window list";
+    WNEXT = "window next";
+    WPREV = "window prev";
+    WS = "window server";
+
+    # Messaging
+    M = "msg";
+    R = "query";
+    ME = "action";
+
+    # IRC information
+    WHO = "who";
+    WHOIS = "whois";
+    NAMES = "names";
+    TOPIC = "topic";
+
+    # Convenience
+    CLEAR = "clear";
+    HELP = "help";
+    RELOAD = "script load ~/.irssi/scripts/startup.pl";
 };
+
+
+# ============================================================
+# STATUS BAR
+# ============================================================
 
 statusbar = {
-  # formats:
-  # when using {templates}, the template is shown only if it's argument isn't
-  # empty unless no argument is given. for example {sb} is printed always,
-  # but {sb $T} is printed only if $T isn't empty.
-
-  items = {
-    # start/end text in statusbars
-    barstart = "{sbstart}";
-    barend = "{sbend}";
-
-    topicbarstart = "{topicsbstart}";
-    topicbarend = "{topicsbend}";
-
-    # treated "normally", you could change the time/user name to whatever
-    time = "%K {sb %G$Z}%K {sbaway $A} %g$topic%K";
-    user = "{sb {sbnickmode $cumode}{sbmode $usermode}}";
-
-    # treated specially .. window is printed with non-empty windows,
-    # window_empty is printed with empty windows
-
-    window = "";
-    #window_empty = "{sb %C{sbservertag $tag}}%n";   
-    window_empty = "{sb $winref/{sbservertag $tag}}";
-    #prompt = "$winref%K/{prompt $[.15]itemname}";
-    prompt = "";
-    prompt_empty = "{prompt $winname}";
-    topic = " $topic";
-    topic_empty = " Irssi v$J - http://irssi.org/help/";
-
-    # all of these treated specially, they're only displayed when needed
-    lag = "{sb Lag: $0-}";
-    act = "{sb $0-}";
-    more = "-- %Ymore below%n --";
-  };
-
-  # there's two type of statusbars. root statusbars are either at the top
-  # of the screen or at the bottom of the screen. window statusbars are at
-  # the top/bottom of each split window in screen.
-  default = {
-    # the "default statusbar" to be displayed at the bottom of the window.
-    # contains all the normal items.
-    window = {
-      disabled = "no";
-
-      # window, root
-      type = "window";
-      # top, bottom
-      placement = "top";
-      # number
-      position = "1";
-      # active, inactive, always
-      visible = "active";
-
-      # list of items in statusbar in the display order
-      items = {
-        barstart = { priority = "100"; };
-        time = { };
-        user = { };
-        window = { };
-        window_empty = { };
-        lag = { priority = "-1"; };
-        more = { priority = "-1"; alignment = "right"; };
-        barend = { priority = "100"; alignment = "right"; };
-      };
+    items = {
+        barstart = "{sbstart}";
+        time = "{sb $Z}";
+        user = "{sb $cumode$usermode}";
+        window = "{sb $winref $name}";
+        prompt = "{prompt $[.12]}";
+        input = "{input}";
+        lag = "{sb Lag: $0}";
+        act = "{sb Act: $0}";
     };
 
-    # statusbar to use in inactive split windows
-    window_inact = {
-      type = "window";
-      placement = "bottom";
-      position = "1";
-      visible = "inactive";
-      items = {
-        barstart = { priority = "100"; };
-        window = { };
-        window_empty = { };
-        more = { priority = "-1"; alignment = "right"; };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-      disabled = "yes";
-    };
-
-    # we treat input line as yet another statusbar :) It's possible to
-    # add other items before or after the input line item.
-    prompt = {
-      type = "root";
-      placement = "bottom";
-      # we want to be at the bottom always
-      position = "1";
-      visible = "active";
-      items = { input = { }; };
-    };
-
-    # topicbar
-    topic = {
-      type = "root";
-      placement = "top";
-      position = "2";
-      visible = "always";
-      items = {
-        topicbarstart = { priority = "100"; };
-        topic = { };
-        topic_empty = { };
-        topicbarend = { priority = "100"; alignment = "right"; };
-      };
-      disabled = "yes";
-    };
-    window_add = { items = { }; disabled = "yes"; };
-    add = { disabled = "yes"; };
-    delete = { disabled = "yes"; };
-    prompt_empty = { position = "0"; disabled = "yes"; };
-    #   rollestatus = { items = {  = { }; }; disabled = "yes"; };
-    #   status = { items = { }; disabled = "yes"; };
-    #   rollstatus = { disabled = "yes"; };
-    asd = {
-      position = "0";
-      placement = "bottom";
-      items = { };
-      disabled = "yes";
-    };
-    topic_empty = { disabled = "yes"; };
-    remove = { items = { }; disabled = "yes"; };
-    channels = { items = { chanact = { }; }; disabled = "yes"; };
-    statusbar = {
-
-      #rollen statusbar:
-
-      items = {
-        #           barstart = "--------------";
-        erotin = {
-          items = { barstart = "asdasd--------------"; };
-          priority = "100";
-          alignment = "left";
-          disabled = "no";
-          placement = "bottom";
-          position = "0";
+    default = {
+        window = {
+            priority = "1";
+            alignment = "left";
+            visible = "always";
         };
-      };
-    };
 
+        window_empty = {
+            priority = "2";
+            alignment = "left";
+            visible = "always";
+        };
 
-    "-before" = { disabled = "yes"; };
-    aw1_0 = { position = "0"; disabled = "yes"; };
-    empty = { placement = "bottom"; position = "0"; disabled = "yes"; };
-    awl_0 = {
-      items = {
-        barstart = { priority = "100"; };
-        usercount = { };
-        awl_0 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
+        prompt = {
+            priority = "10";
+            alignment = "left";
+            visible = "always";
+        };
+
+        input = {
+            priority = "10";
+            alignment = "left";
+            visible = "always";
+        };
+
+        time = {
+            priority = "100";
+            alignment = "right";
+            visible = "always";
+        };
     };
-  };
 };
+
+
+# ============================================================
+# COMPLETION / HIGHLIGHTING
+# ============================================================
+
+hilights = (
+    {
+        text = "NewUser";
+        nick = "yes";
+        word = "yes";
+        level = "MSGS NOTICES";
+    }
+);
+
+
+# ============================================================
+# IGNORE SETTINGS
+# ============================================================
+
+ignores = (
+);
+
+
+# ============================================================
+# WINDOWS
+# ============================================================
+
+windows = (
+    {
+        name = "(status)";
+        refnum = "1";
+    }
+);
+
+
+# ============================================================
+# LOGGING
+# ============================================================
+
+logs = (
+);
+
+
+# ============================================================
+# ADVANCED / SAFETY
+# ============================================================
+
 settings = {
-  core = {
-    real_name = "interceptx";
-    user_name = "interceptx";
-    nick = "marvel";
-  };
-  "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "weed"; };
-  "perl/core/scripts" = {
-    awl_all_disable = "no";
-    awl_automode = "sbar";
-    awl_block = "20";
-    awl_columns = "1";
-    awl_display_key = "%K%0$H $N %N";
-    awl_display_key_active = "%1 %W$C %N";
-    awl_display_nokey = "%K%0$H $N %N";
-    awl_display_nokey_active = "%1 %W$C %N";
-    awl_height_adjust = "1";
-    awl_hide_data = "0";
-    awl_maxlines = "9";
-    awl_placement = "bottom";
-    awl_position = "0";
-    awl_prefer_name = "yes";
-    awl_sbar_maxlength = "yes";
-    awl_separator = "%N %N";
-    awl_sort = "refnum";
-  };
-  "irc/core" = {
-    part_message = "'power interruption occured! continent asia : country : japan : province : fushika '";
-  };
+    core = {
+        # Do not automatically execute arbitrary commands received
+        # from servers.
+        real_name = "IRC User";
+
+        # UTF-8 is the safest default for modern IRC.
+        recode = "yes";
+
+        # Save settings when changed.
+        settings_autosave = "yes";
+    };
 };
